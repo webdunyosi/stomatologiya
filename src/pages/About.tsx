@@ -2,7 +2,7 @@ import { Heart, Award, Users, Microscope, User } from 'lucide-react';
 
 const About = () => {
   return (
-    <div className="w-full font-sans">
+    <div className="w-full font-sans bg-white pb-0">
       
       {/* 1. Hero Qismi */}
       <section className="bg-blue-600 text-white py-24 px-4 text-center">
@@ -44,44 +44,44 @@ const About = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Card 1 */}
-            <div className="bg-white border rounded-xl p-8 text-center shadow-sm hover:shadow-md transition">
-              <div className="flex justify-center mb-4">
+            <div className="bg-white border border-gray-100 rounded-2xl p-8 text-center shadow-sm hover:-translate-y-2 hover:shadow-xl hover:border-blue-200 transition-all duration-300 group">
+              <div className="flex justify-center mb-6 transform group-hover:scale-110 transition-transform duration-300">
                 <Heart className="w-12 h-12 text-blue-600" />
               </div>
-              <h3 className="font-bold text-xl mb-3 text-gray-900">Mehribon parvarish</h3>
+              <h3 className="font-bold text-xl mb-3 text-gray-900 group-hover:text-blue-600 transition-colors duration-300">Mehribon parvarish</h3>
               <p className="text-gray-500 text-sm leading-relaxed">
                 Har bir bemorga mehr, hamdardlik va hurmat bilan munosabatda bo'lamiz.
               </p>
             </div>
             
             {/* Card 2 */}
-            <div className="bg-white border rounded-xl p-8 text-center shadow-sm hover:shadow-md transition">
-              <div className="flex justify-center mb-4">
+            <div className="bg-white border border-gray-100 rounded-2xl p-8 text-center shadow-sm hover:-translate-y-2 hover:shadow-xl hover:border-blue-200 transition-all duration-300 group">
+              <div className="flex justify-center mb-6 transform group-hover:scale-110 transition-transform duration-300">
                 <Award className="w-12 h-12 text-blue-600" />
               </div>
-              <h3 className="font-bold text-xl mb-3 text-gray-900">Mukammallik</h3>
+              <h3 className="font-bold text-xl mb-3 text-gray-900 group-hover:text-blue-600 transition-colors duration-300">Mukammallik</h3>
               <p className="text-gray-500 text-sm leading-relaxed">
                 Stomatologik xizmat va xizmat ko'rsatishning eng yuqori standartlariga sodiqmiz.
               </p>
             </div>
 
             {/* Card 3 */}
-            <div className="bg-white border rounded-xl p-8 text-center shadow-sm hover:shadow-md transition">
-              <div className="flex justify-center mb-4">
+            <div className="bg-white border border-gray-100 rounded-2xl p-8 text-center shadow-sm hover:-translate-y-2 hover:shadow-xl hover:border-blue-200 transition-all duration-300 group">
+              <div className="flex justify-center mb-6 transform group-hover:scale-110 transition-transform duration-300">
                 <Users className="w-12 h-12 text-blue-600" />
               </div>
-              <h3 className="font-bold text-xl mb-3 text-gray-900">Bemorga e'tibor</h3>
+              <h3 className="font-bold text-xl mb-3 text-gray-900 group-hover:text-blue-600 transition-colors duration-300">Bemorga e'tibor</h3>
               <p className="text-gray-500 text-sm leading-relaxed">
                 Sizning ehtiyojlaringiz va qulayligingiz biz qiladigan hamma narsaning markazida.
               </p>
             </div>
 
             {/* Card 4 */}
-            <div className="bg-white border rounded-xl p-8 text-center shadow-sm hover:shadow-md transition">
-              <div className="flex justify-center mb-4">
+            <div className="bg-white border border-gray-100 rounded-2xl p-8 text-center shadow-sm hover:-translate-y-2 hover:shadow-xl hover:border-blue-200 transition-all duration-300 group">
+              <div className="flex justify-center mb-6 transform group-hover:scale-110 transition-transform duration-300">
                 <Microscope className="w-12 h-12 text-blue-600" />
               </div>
-              <h3 className="font-bold text-xl mb-3 text-gray-900">Innovatsiya</h3>
+              <h3 className="font-bold text-xl mb-3 text-gray-900 group-hover:text-blue-600 transition-colors duration-300">Innovatsiya</h3>
               <p className="text-gray-500 text-sm leading-relaxed">
                 Yaxshiroq natijalar uchun eng so'nggi texnologiya va usullardan foydalanish.
               </p>
@@ -98,42 +98,42 @@ const About = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Team Member 1 */}
-          <div className="bg-white border rounded-xl p-8 text-center shadow-sm hover:shadow-md transition">
-            <div className="w-24 h-24 bg-gray-200 rounded-full mx-auto flex items-center justify-center mb-6 text-gray-400">
+          <div className="bg-white border border-gray-100 rounded-2xl p-8 text-center shadow-sm hover:-translate-y-2 hover:shadow-xl hover:border-blue-200 transition-all duration-300 group cursor-default">
+            <div className="w-24 h-24 bg-gray-100 rounded-full mx-auto flex items-center justify-center mb-6 text-gray-400 group-hover:bg-blue-50 group-hover:text-blue-600 transition-colors duration-300">
               <User size={48} />
             </div>
-            <h3 className="font-bold text-lg text-gray-900">Dr. Saida Karimova</h3>
-            <p className="text-blue-600 text-sm my-2">Bosh stomatolog va asoschisi</p>
+            <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-600 transition-colors duration-300">Dr. Saida Karimova</h3>
+            <p className="text-blue-600 text-sm my-2 font-medium">Bosh stomatolog va asoschisi</p>
             <p className="text-gray-500 text-sm mt-3">Umumiy stomatologiya va kosmetik protseduralar</p>
           </div>
 
           {/* Team Member 2 */}
-          <div className="bg-white border rounded-xl p-8 text-center shadow-sm hover:shadow-md transition">
-            <div className="w-24 h-24 bg-gray-200 rounded-full mx-auto flex items-center justify-center mb-6 text-gray-400">
+          <div className="bg-white border border-gray-100 rounded-2xl p-8 text-center shadow-sm hover:-translate-y-2 hover:shadow-xl hover:border-blue-200 transition-all duration-300 group cursor-default">
+            <div className="w-24 h-24 bg-gray-100 rounded-full mx-auto flex items-center justify-center mb-6 text-gray-400 group-hover:bg-blue-50 group-hover:text-blue-600 transition-colors duration-300">
               <User size={48} />
             </div>
-            <h3 className="font-bold text-lg text-gray-900">Dr. Jamshid Tursunov</h3>
-            <p className="text-blue-600 text-sm my-2">Ortodont</p>
+            <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-600 transition-colors duration-300">Dr. Jamshid Tursunov</h3>
+            <p className="text-blue-600 text-sm my-2 font-medium">Ortodont</p>
             <p className="text-gray-500 text-sm mt-3">Breketlar va Invisalign mutaxassisi</p>
           </div>
 
           {/* Team Member 3 */}
-          <div className="bg-white border rounded-xl p-8 text-center shadow-sm hover:shadow-md transition">
-            <div className="w-24 h-24 bg-gray-200 rounded-full mx-auto flex items-center justify-center mb-6 text-gray-400">
+          <div className="bg-white border border-gray-100 rounded-2xl p-8 text-center shadow-sm hover:-translate-y-2 hover:shadow-xl hover:border-blue-200 transition-all duration-300 group cursor-default">
+            <div className="w-24 h-24 bg-gray-100 rounded-full mx-auto flex items-center justify-center mb-6 text-gray-400 group-hover:bg-blue-50 group-hover:text-blue-600 transition-colors duration-300">
               <User size={48} />
             </div>
-            <h3 className="font-bold text-lg text-gray-900">Dr. Dilnoza Rahimova</h3>
-            <p className="text-blue-600 text-sm my-2">Bolalar stomatologi</p>
+            <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-600 transition-colors duration-300">Dr. Dilnoza Rahimova</h3>
+            <p className="text-blue-600 text-sm my-2 font-medium">Bolalar stomatologi</p>
             <p className="text-gray-500 text-sm mt-3">Bolalar tish parvarishi</p>
           </div>
 
           {/* Team Member 4 */}
-          <div className="bg-white border rounded-xl p-8 text-center shadow-sm hover:shadow-md transition">
-            <div className="w-24 h-24 bg-gray-200 rounded-full mx-auto flex items-center justify-center mb-6 text-gray-400">
+          <div className="bg-white border border-gray-100 rounded-2xl p-8 text-center shadow-sm hover:-translate-y-2 hover:shadow-xl hover:border-blue-200 transition-all duration-300 group cursor-default">
+            <div className="w-24 h-24 bg-gray-100 rounded-full mx-auto flex items-center justify-center mb-6 text-gray-400 group-hover:bg-blue-50 group-hover:text-blue-600 transition-colors duration-300">
               <User size={48} />
             </div>
-            <h3 className="font-bold text-lg text-gray-900">Dr. Aziz Umarov</h3>
-            <p className="text-blue-600 text-sm my-2">Og'iz jarrohi</p>
+            <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-600 transition-colors duration-300">Dr. Aziz Umarov</h3>
+            <p className="text-blue-600 text-sm my-2 font-medium">Og'iz jarrohi</p>
             <p className="text-gray-500 text-sm mt-3">Jarrohlik protseduralari va implantlar</p>
           </div>
         </div>
@@ -142,19 +142,19 @@ const About = () => {
       {/* 5. Statistika qismi */}
       <section className="bg-blue-600 text-white py-16 px-4">
         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          <div>
+          <div className="hover:scale-110 transition-transform duration-300 cursor-default">
             <div className="text-4xl md:text-5xl font-bold mb-3">15+</div>
             <div className="text-blue-100 font-medium">Yillik tajriba</div>
           </div>
-          <div>
+          <div className="hover:scale-110 transition-transform duration-300 cursor-default">
             <div className="text-4xl md:text-5xl font-bold mb-3">10,000+</div>
             <div className="text-blue-100 font-medium">Mamnun bemorlar</div>
           </div>
-          <div>
+          <div className="hover:scale-110 transition-transform duration-300 cursor-default">
             <div className="text-4xl md:text-5xl font-bold mb-3">25+</div>
             <div className="text-blue-100 font-medium">Mutaxassis xodimlar</div>
           </div>
-          <div>
+          <div className="hover:scale-110 transition-transform duration-300 cursor-default">
             <div className="text-4xl md:text-5xl font-bold mb-3">98%</div>
             <div className="text-blue-100 font-medium">Qoniqish darajasi</div>
           </div>
