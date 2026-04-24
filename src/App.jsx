@@ -4,6 +4,7 @@ import Footer from "./components/Footer"
 import Home from "./pages/Home"
 import About from "./pages/About" // Shu qatorni qo'shasiz
 import Education from "./pages/Education"
+import Appointment from "./pages/Appointment"
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/biz-haqimizda" element={<About />} />{" "}
             <Route path="/talim" element={<Education />} />
-            {/* Va shu qatorni qo'shasiz */}
+            <Route path="/qabul" element={<Appointment />} />
           </Routes>
         </main>
         <Footer />
