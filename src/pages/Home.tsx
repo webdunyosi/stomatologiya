@@ -117,9 +117,8 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="lg:w-1/2 w-full h-[400px] bg-gray-100 rounded-2xl flex items-center justify-center text-gray-400 hover:shadow-2xl transition-shadow duration-500 overflow-hidden relative group cursor-pointer border border-gray-200">
-          <span className="relative z-10 group-hover:scale-110 transition-transform duration-500">Stomatologiya ofisi rasmi</span>
-          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-500"></div>
+        <div className=" lg:w-1/2 w-full h-[400px] bg-gray-100 rounded-2xl flex items-center justify-center text-gray-400 hover:shadow-2xl transition-shadow duration-500 overflow-hidden relative group cursor-pointer border border-gray-200">
+          <img src="1.png" alt="Stomatologiya ofisi rasmi" className="w-full h-full object-cover group-hover:scale-110 transition-all duration-500" />
         </div>
       </section>
 
