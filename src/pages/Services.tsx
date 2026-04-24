@@ -163,13 +163,13 @@ const Services = () => {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
         
         {/* Tab tugmalari */}
-        <div className="flex justify-center mb-10 overflow-x-auto pb-4 no-scrollbar">
+        <div className="flex justify-start md:justify-center mb-10 overflow-x-auto pb-4 hide-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0">
           <div className="flex bg-gray-100 rounded-full p-1.5 space-x-1 min-w-max">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`py-3 px-8 rounded-full text-sm font-semibold transition-all duration-300 ${
+                className={`py-3 px-6 md:px-8 rounded-full text-sm font-semibold transition-all duration-300 whitespace-nowrap ${
                   activeTab === tab.id 
                     ? 'bg-white text-gray-900 shadow-sm' 
                     : 'text-gray-600 hover:text-gray-900 hover:bg-gray-200/50'
