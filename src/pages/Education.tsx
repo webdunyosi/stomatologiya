@@ -1,32 +1,32 @@
 import { useState } from 'react';
 import { FileText, Video, FileQuestion, Search, ChevronDown, ChevronUp } from 'lucide-react';
 import educationData from '../data/educationData.json';
+import { useSearch } from '../hooks/useSearch';
 
 const Education = () => {
-  // JSON dan kelgan ma'lumotlarni o'zgaruvchilarga ajratib olamiz
+  // JSON ma'lumotlarini yuklash
   const { articles, videos, faqs } = educationData;
 
-  const [activeTab, setActiveTab] = useState('videos'); 
+  // State'lar
+  const [activeTab, setActiveTab] = useState('articles');
   const [openFaq, setOpenFaq] = useState<number | null>(0);
-  const [searchQuery, setSearchQuery] = useState('');
 
+  // useSearch hookidan foydalanish (Maqolalar uchun)
+  const { 
+    query: searchQuery, 
+    setQuery: setSearchQuery, 
+    filteredItems: filteredArticles 
+  } = useSearch(articles, ['title', 'desc', 'category']);
+
+  // FAQni ochib-yopish funksiyasi
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
   };
 
-  const filteredArticles = articles.filter(article => {
-    const query = searchQuery.toLowerCase();
-    return (
-      article.title.toLowerCase().includes(query) ||
-      article.desc.toLowerCase().includes(query) ||
-      article.category.toLowerCase().includes(query)
-    );
-  });
-
   return (
     <div className="w-full font-sans bg-gray-50 min-h-screen pb-20">
       
-      {/* Hero qismi */}
+      {/* 1. Hero qismi */}
       <section className="bg-blue-600 text-white py-24 px-4 text-center">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Og'iz salomatligi ta'limi</h1>
@@ -36,7 +36,7 @@ const Education = () => {
         </div>
       </section>
 
-      {/* Asosiy kontent qismi */}
+      {/* 2. Navigatsiya va Kontent qismi */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-10">
         
         {/* Tab tugmalari */}
@@ -72,12 +72,14 @@ const Education = () => {
           </button>
         </div>
 
-        {/* Tab Kontentlari */}
+        {/* Tab kontentlari */}
         <div className="max-w-6xl mx-auto">
           
-          {/* 1. MAQOLALAR TABI */}
+          {/* --- 1. MAQOLALAR TABI --- */}
           {activeTab === 'articles' && (
             <div className="animate-in fade-in duration-300">
+              
+              {/* Qidiruv inputi */}
               <div className="relative mb-8 max-w-6xl mx-auto">
                 <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                   <Search className="h-5 w-5 text-gray-400" />
@@ -91,9 +93,10 @@ const Education = () => {
                 />
               </div>
 
+              {/* Maqolalar gridi */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredArticles.length > 0 ? (
-                  filteredArticles.map((item, idx) => (
+                  filteredArticles.map((item: any, idx: number) => (
                     <div key={idx} className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm hover:-translate-y-2 hover:shadow-xl hover:border-blue-200 transition-all duration-300">
                       <p className="text-blue-600 text-sm font-medium mb-3">{item.category}</p>
                       <h3 className="text-xl font-bold text-gray-900 mb-4">{item.title}</h3>
@@ -106,20 +109,20 @@ const Education = () => {
                   <div className="col-span-full bg-white border border-gray-200 rounded-2xl p-12 text-center shadow-sm">
                     <Search className="w-12 h-12 text-gray-300 mx-auto mb-4" />
                     <h3 className="text-lg font-bold text-gray-900 mb-2">Maqola topilmadi</h3>
-                    <p className="text-gray-500">"{searchQuery}" bo'yicha hech narsa topilmadi. Boshqa so'z bilan izlab ko'ring.</p>
+                    <p className="text-gray-500">"{searchQuery}" bo'yicha hech narsa topilmadi. Boshqa so'z kiriting.</p>
                   </div>
                 )}
               </div>
             </div>
           )}
 
-          {/* 2. VIDEOLAR TABI (YOUTUBE IFRAME BILAN) */}
+          {/* --- 2. VIDEOLAR TABI --- */}
           {activeTab === 'videos' && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-in fade-in duration-300">
-              {videos.map((item, idx) => (
+              {videos.map((item: any, idx: number) => (
                 <div key={idx} className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:-translate-y-2 hover:shadow-xl hover:border-blue-200 transition-all duration-300 group">
                   
-                  {/* Haqiqiy YouTube Iframe */}
+                  {/* YouTube Iframe */}
                   <div className="h-56 w-full bg-gray-200 relative">
                     <iframe 
                       className="absolute top-0 left-0 w-full h-full"
@@ -131,7 +134,6 @@ const Education = () => {
                     ></iframe>
                   </div>
                   
-                  {/* Video ma'lumoti */}
                   <div className="p-6">
                     <h3 className="font-bold text-lg text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">{item.title}</h3>
                     <p className="text-gray-500 text-sm">Davomiyligi: {item.duration}</p>
@@ -141,13 +143,13 @@ const Education = () => {
             </div>
           )}
 
-          {/* 3. SAVOL-JAVOBLAR (FAQ) TABI */}
+          {/* --- 3. SAVOL-JAVOBLAR TABI --- */}
           {activeTab === 'faq' && (
             <div className="max-w-6xl mx-auto bg-white border border-gray-200 rounded-2xl p-8 animate-in fade-in duration-300 shadow-sm">
               <h2 className="text-2xl font-bold text-gray-900 mb-8">Tez-tez so'raladigan savollar</h2>
               
               <div className="divide-y divide-gray-100 border-t border-gray-100">
-                {faqs.map((faq, index) => (
+                {faqs.map((faq: any, index: number) => (
                   <div key={index} className="py-5">
                     <button
                       onClick={() => toggleFaq(index)}
