@@ -1,4 +1,5 @@
 import { Heart, Award, Users, Microscope } from 'lucide-react';
+import teamMembers from '../data/teamData.json';
 
 const About = () => {
   return (
@@ -90,52 +91,36 @@ const About = () => {
         </div>
       </section>
 
-      {/* 4. Bizning jamoa */}
+      {/* 4. Bizning jamoa - DINAMIK QISM */}
       <section className="py-20 px-4 max-w-7xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
           Bizning jamoa
         </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {/* Team Member 1 */}
-          <div className="bg-white border border-gray-100 rounded-2xl p-8 text-center shadow-sm hover:-translate-y-2 hover:shadow-xl hover:border-blue-200 transition-all duration-300 group cursor-default">
-            <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-gray-50 group-hover:border-blue-100 transition-colors duration-300">
-              <img src="/doktors/1.png" alt="Dr. Saida Karimova" className="w-full h-full object-cover" />
+          {teamMembers.map((member) => (
+            <div 
+              key={member.id} 
+              className="bg-white border border-gray-100 rounded-2xl p-8 text-center shadow-sm hover:-translate-y-2 hover:shadow-xl hover:border-blue-200 transition-all duration-300 group cursor-default"
+            >
+              <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-gray-50 group-hover:border-blue-100 transition-colors duration-300">
+                <img 
+                  src={member.image} 
+                  alt={member.name} 
+                  className="w-full h-full object-cover" 
+                />
+              </div>
+              <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+                {member.name}
+              </h3>
+              <p className="text-blue-600 text-sm my-2 font-medium">
+                {member.role}
+              </p>
+              <p className="text-gray-500 text-sm mt-3">
+                {member.specialty}
+              </p>
             </div>
-            <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-600 transition-colors duration-300">Dr. Saida Karimova</h3>
-            <p className="text-blue-600 text-sm my-2 font-medium">Bosh stomatolog va asoschisi</p>
-            <p className="text-gray-500 text-sm mt-3">Umumiy stomatologiya va kosmetik protseduralar</p>
-          </div>
-
-          {/* Team Member 2 */}
-          <div className="bg-white border border-gray-100 rounded-2xl p-8 text-center shadow-sm hover:-translate-y-2 hover:shadow-xl hover:border-blue-200 transition-all duration-300 group cursor-default">
-            <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-gray-50 group-hover:border-blue-100 transition-colors duration-300">
-              <img src="/doktors/2.png" alt="Dr. Jamshid Tursunov" className="w-full h-full object-cover" />
-            </div>
-            <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-600 transition-colors duration-300">Dr. Jamshid Tursunov</h3>
-            <p className="text-blue-600 text-sm my-2 font-medium">Ortodont</p>
-            <p className="text-gray-500 text-sm mt-3">Breketlar va Invisalign mutaxassisi</p>
-          </div>
-
-          {/* Team Member 3 */}
-          <div className="bg-white border border-gray-100 rounded-2xl p-8 text-center shadow-sm hover:-translate-y-2 hover:shadow-xl hover:border-blue-200 transition-all duration-300 group cursor-default">
-            <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-gray-50 group-hover:border-blue-100 transition-colors duration-300">
-              <img src="/doktors/3.png" alt="Dr. Dilnoza Rahimova" className="w-full h-full object-cover" />
-            </div>
-            <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-600 transition-colors duration-300">Dr. Dilnoza Rahimova</h3>
-            <p className="text-blue-600 text-sm my-2 font-medium">Bolalar stomatologi</p>
-            <p className="text-gray-500 text-sm mt-3">Bolalar tish parvarishi</p>
-          </div>
-
-          {/* Team Member 4 */}
-          <div className="bg-white border border-gray-100 rounded-2xl p-8 text-center shadow-sm hover:-translate-y-2 hover:shadow-xl hover:border-blue-200 transition-all duration-300 group cursor-default">
-            <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-gray-50 group-hover:border-blue-100 transition-colors duration-300">
-              <img src="/doktors/4.png" alt="Dr. Aziz Umarov" className="w-full h-full object-cover" />
-            </div>
-            <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-600 transition-colors duration-300">Dr. Aziz Umarov</h3>
-            <p className="text-blue-600 text-sm my-2 font-medium">Og'iz jarrohi</p>
-            <p className="text-gray-500 text-sm mt-3">Jarrohlik protseduralari va implantlar</p>
-          </div>
+          ))}
         </div>
       </section>
 
