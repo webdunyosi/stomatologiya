@@ -1,4 +1,4 @@
-import { Heart, Award, Users, Microscope, User } from 'lucide-react';
+import { Heart, Award, Users, Microscope } from 'lucide-react';
 
 const About = () => {
   return (
@@ -99,8 +99,8 @@ const About = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Team Member 1 */}
           <div className="bg-white border border-gray-100 rounded-2xl p-8 text-center shadow-sm hover:-translate-y-2 hover:shadow-xl hover:border-blue-200 transition-all duration-300 group cursor-default">
-            <div className="w-24 h-24 bg-gray-100 rounded-full mx-auto flex items-center justify-center mb-6 text-gray-400 group-hover:bg-blue-50 group-hover:text-blue-600 transition-colors duration-300">
-              <User size={48} />
+            <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-gray-50 group-hover:border-blue-100 transition-colors duration-300">
+              <img src="/doktors/1.png" alt="Dr. Saida Karimova" className="w-full h-full object-cover" />
             </div>
             <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-600 transition-colors duration-300">Dr. Saida Karimova</h3>
             <p className="text-blue-600 text-sm my-2 font-medium">Bosh stomatolog va asoschisi</p>
@@ -109,8 +109,8 @@ const About = () => {
 
           {/* Team Member 2 */}
           <div className="bg-white border border-gray-100 rounded-2xl p-8 text-center shadow-sm hover:-translate-y-2 hover:shadow-xl hover:border-blue-200 transition-all duration-300 group cursor-default">
-            <div className="w-24 h-24 bg-gray-100 rounded-full mx-auto flex items-center justify-center mb-6 text-gray-400 group-hover:bg-blue-50 group-hover:text-blue-600 transition-colors duration-300">
-              <User size={48} />
+            <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-gray-50 group-hover:border-blue-100 transition-colors duration-300">
+              <img src="/doktors/2.png" alt="Dr. Jamshid Tursunov" className="w-full h-full object-cover" />
             </div>
             <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-600 transition-colors duration-300">Dr. Jamshid Tursunov</h3>
             <p className="text-blue-600 text-sm my-2 font-medium">Ortodont</p>
@@ -119,8 +119,8 @@ const About = () => {
 
           {/* Team Member 3 */}
           <div className="bg-white border border-gray-100 rounded-2xl p-8 text-center shadow-sm hover:-translate-y-2 hover:shadow-xl hover:border-blue-200 transition-all duration-300 group cursor-default">
-            <div className="w-24 h-24 bg-gray-100 rounded-full mx-auto flex items-center justify-center mb-6 text-gray-400 group-hover:bg-blue-50 group-hover:text-blue-600 transition-colors duration-300">
-              <User size={48} />
+            <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-gray-50 group-hover:border-blue-100 transition-colors duration-300">
+              <img src="/doktors/3.png" alt="Dr. Dilnoza Rahimova" className="w-full h-full object-cover" />
             </div>
             <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-600 transition-colors duration-300">Dr. Dilnoza Rahimova</h3>
             <p className="text-blue-600 text-sm my-2 font-medium">Bolalar stomatologi</p>
@@ -129,8 +129,8 @@ const About = () => {
 
           {/* Team Member 4 */}
           <div className="bg-white border border-gray-100 rounded-2xl p-8 text-center shadow-sm hover:-translate-y-2 hover:shadow-xl hover:border-blue-200 transition-all duration-300 group cursor-default">
-            <div className="w-24 h-24 bg-gray-100 rounded-full mx-auto flex items-center justify-center mb-6 text-gray-400 group-hover:bg-blue-50 group-hover:text-blue-600 transition-colors duration-300">
-              <User size={48} />
+            <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-gray-50 group-hover:border-blue-100 transition-colors duration-300">
+              <img src="/doktors/4.png" alt="Dr. Aziz Umarov" className="w-full h-full object-cover" />
             </div>
             <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-600 transition-colors duration-300">Dr. Aziz Umarov</h3>
             <p className="text-blue-600 text-sm my-2 font-medium">Og'iz jarrohi</p>
