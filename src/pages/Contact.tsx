@@ -241,11 +241,18 @@ ${formData.message}
               </form>
             </div>
 
-            {/* Xarita (Placeholder) */}
-            <div className="bg-[#E5E7EB] border border-gray-200 rounded-2xl h-[400px] flex flex-col items-center justify-center text-gray-500 shadow-sm hover:-translate-y-2 hover:shadow-xl transition-all duration-300">
-              <MapPin className="w-16 h-16 mb-4 text-gray-400" />
-              <h3 className="font-medium text-lg">Xarita joylashuvi</h3>
-              <p className="text-sm">Buyuk Ipak yo'li 100, Toshkent</p>
+            {/* Xarita */}
+            <div className="bg-[#E5E7EB] border border-gray-200 rounded-2xl h-[400px] shadow-sm hover:-translate-y-2 hover:shadow-xl transition-all duration-300 overflow-hidden relative">
+              <iframe 
+                src="https://maps.google.com/maps?q=Buyuk%20Ipak%20yo'li%20100,%20Toshkent&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }} 
+                allowFullScreen={false} 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+                className="absolute inset-0"
+              ></iframe>
             </div>
 
           </div>
