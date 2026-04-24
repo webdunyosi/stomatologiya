@@ -6,6 +6,7 @@ import About from "./pages/About" // Shu qatorni qo'shasiz
 import Education from "./pages/Education"
 import Appointment from "./pages/Appointment"
 import Services from "./pages/Services"
+import Contact from "./pages/Contact"
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/talim" element={<Education />} />
             <Route path="/qabul" element={<Appointment />} />
             <Route path="/xizmatlar" element={<Services />} />
+            <Route path="/aloqa" element={<Contact />} />
           </Routes>
         </main>
         <Footer />
