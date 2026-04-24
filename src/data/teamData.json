@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Dr. Saida Karimova",
+    "role": "Bosh stomatolog va asoschisi",
+    "specialty": "Umumiy stomatologiya va kosmetik protseduralar",
+    "image": "/doktors/1.png"
+  },
+  {
+    "id": 2,
+    "name": "Dr. Jamshid Tursunov",
+    "role": "Ortodont",
+    "specialty": "Breketlar va Invisalign mutaxassisi",
+    "image": "/doktors/2.png"
+  },
+  {
+    "id": 3,
+    "name": "Dr. Dilnoza Rahimova",
+    "role": "Bolalar stomatologi",
+    "specialty": "Bolalar tish parvarishi",
+    "image": "/doktors/3.png"
+  },
+  {
+    "id": 4,
+    "name": "Dr. Aziz Umarov",
+    "role": "Og'iz jarrohi",
+    "specialty": "Jarrohlik protseduralari va implantlar",
+    "image": "/doktors/4.png"
+  }
+]
