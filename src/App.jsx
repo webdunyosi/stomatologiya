@@ -5,6 +5,7 @@ import Home from "./pages/Home"
 import About from "./pages/About" // Shu qatorni qo'shasiz
 import Education from "./pages/Education"
 import Appointment from "./pages/Appointment"
+import Services from "./pages/Services"
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/biz-haqimizda" element={<About />} />{" "}
             <Route path="/talim" element={<Education />} />
             <Route path="/qabul" element={<Appointment />} />
+            <Route path="/xizmatlar" element={<Services />} />
           </Routes>
         </main>
         <Footer />
