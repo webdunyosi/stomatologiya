@@ -9,6 +9,7 @@ import {
   Calendar as CalendarIcon,
   Phone
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Appointments = () => {
   // Filtrlash uchun state'lar
@@ -54,9 +55,9 @@ const Appointments = () => {
           <h2 className="text-2xl font-black text-gray-900">Qabullar ro'yxati</h2>
           <p className="text-sm text-gray-500 mt-1">Barcha rejalashtirilgan va o'tgan qabullarni boshqarish</p>
         </div>
-        <button className="bg-blue-600 text-white px-5 py-2.5 rounded-xl font-bold hover:bg-blue-700 transition-all active:scale-95 text-sm shadow-lg shadow-blue-500/30">
+        <Link to="/admin/qabullar/yangi" className="bg-blue-600 text-white px-5 py-2.5 rounded-xl font-bold hover:bg-blue-700 transition-all active:scale-95 text-sm shadow-lg shadow-blue-500/30 text-center">
           + Yangi qabul qo'shish
-        </button>
+        </Link>
       </div>
 
       {/* Filtrlash va Qidiruv qismi */}

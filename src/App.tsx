@@ -28,6 +28,8 @@ import Appointments from "./pages/admin/Appointments";
 import AdminSettings from "./pages/admin/AdminSettings";
 import Patients from "./pages/admin/Patients";
 import Doctors from "./pages/admin/Doctors";
+import Notifications from "./pages/admin/Notifications";
+import AdminAddAppointment from "./pages/admin/AdminAddAppointment";
 
 /**
  * App Komponenti - Loyihaning asosiy marshrutizatsiya (Routing) qismi.
@@ -87,11 +89,17 @@ const App = () => {
           {/* YANGA QO'SHILGAN QABULLAR SAHIFASI */}
           <Route path="qabullar" element={<Appointments />} />
 
+          {/* YANGA QO'SHILGAN: QABUL QO'SHISH SAHIFASI */}
+          <Route path="qabullar/yangi" element={<AdminAddAppointment />} />
+
           {/* YANGA QO'SHILGAN BEMORLAR SAHIFASI */}
           <Route path="bemorlar" element={<Patients />} />
 
           {/* YANGA QO'SHILGAN SHIFOKORLAR SAHIFASI */}
           <Route path="shifokorlar" element={<Doctors />} />
+
+          {/* YANGA QO'SHILGAN BILDIRISHNOMALAR */}
+          <Route path="bildirishnomalar" element={<Notifications />} />
 
           {/* PROFIL SOZLAMALARI SAHIFASI */}
           <Route path="sozlamalar" element={<AdminSettings />} />
