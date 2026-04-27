@@ -1,0 +1,149 @@
+import { useState } from 'react';
+import { useAuth } from '../../context/AuthContext';
+import { CheckCircle2, AlertCircle } from 'lucide-react';
+
+const Booking = () => {
+  const { user } = useAuth(); // Profilga kirgan foydalanuvchi ma'lumotlarini olish
+  
+  // Form inputlari uchun state'lar
+  const [doctor, setDoctor] = useState('Dr. Jamshid Tursunov (Ortodont)');
+  const [date, setDate] = useState('');
+  const [time, setTime] = useState('09:00');
+  
+  // Yuklanish va xabarlar uchun
+  const [isLoading, setIsLoading] = useState(false);
+  const [status, setStatus] = useState<{ type: 'success' | 'error' | null; text: string }>({ type: null, text: '' });
+
+  // Telegram bot ma'lumotlari
+  const BOT_TOKEN = '8664236528:AAHYozJSlLSJ1_nn-cktvcPRknQ4b4dif7I';
+  const CHAT_ID = '5414733748';
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Sanani kiritmagan bo'lsa xato berish
+    if (!date) {
+      setStatus({ type: 'error', text: 'Iltimos, sanani tanlang!' });
+      return;
+    }
+
+    setIsLoading(true);
+    setStatus({ type: null, text: '' });
+
+    // Telegramga yuboriladigan xabar matni (HTML formatida)
+    const text = `
+🏥 <b>Yangi qabul so'rovi!</b>
+
+👤 <b>Bemor:</b> ${user?.name || "Noma'lum"}
+📞 <b>Telefon:</b> ${user?.phone || "Noma'lum"}
+
+👨‍⚕️ <b>Shifokor:</b> ${doctor}
+📅 <b>Sana:</b> ${date}
+⏰ <b>Vaqt:</b> ${time}
+
+🌐 <i>StomaCare tizimi orqali yuborildi</i>
+    `;
+
+    try {
+      const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: CHAT_ID,
+          text: text,
+          parse_mode: 'HTML'
+        })
+      });
+
+      if (response.ok) {
+        setStatus({ type: 'success', text: "Qabul muvaffaqiyatli band qilindi! Tez orada xodimlarimiz siz bilan bog'lanishadi." });
+        // Formani tozalash
+        setDate('');
+        setTime('09:00');
+      } else {
+        setStatus({ type: 'error', text: "Xatolik yuz berdi. Iltimos qaytadan urinib ko'ring." });
+      }
+    } catch (error) {
+      setStatus({ type: 'error', text: "Internet tarmog'ida muammo yuz berdi." });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <div className="max-w-3xl mx-auto space-y-8 bg-white p-8 md:p-12 rounded-[40px] shadow-sm border border-gray-100 animate-in fade-in zoom-in-95 duration-500">
+      <div className="text-center">
+        <h2 className="text-3xl font-black text-blue-900">Qabulga yozilish</h2>
+        <p className="text-gray-500 mt-2">O'zingizga qulay vaqt va shifokorni tanlang</p>
+      </div>
+
+      <form onSubmit={handleSubmit} className="space-y-6">
+        
+        {/* Shifokor tanlash */}
+        <div>
+          <label className="block text-sm font-bold text-gray-700 ml-2 mb-2">Shifokorni tanlang</label>
+          <select 
+            value={doctor}
+            onChange={(e) => setDoctor(e.target.value)}
+            className="w-full bg-gray-50 border border-transparent hover:border-blue-100 px-6 py-4 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500/20 transition-all cursor-pointer text-gray-900"
+          >
+            <option value="Dr. Jamshid Tursunov (Ortodont)">Dr. Jamshid Tursunov (Ortodont)</option>
+            <option value="Dr. Saida Karimova (Terapevt)">Dr. Saida Karimova (Terapevt)</option>
+            <option value="Dr. Aziz Umarov (Jarroh)">Dr. Aziz Umarov (Jarroh)</option>
+          </select>
+        </div>
+
+        {/* Sana va Vaqt */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label className="block text-sm font-bold text-gray-700 ml-2 mb-2">Sana</label>
+            <input 
+              type="date" 
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              className="w-full bg-gray-50 border border-transparent hover:border-blue-100 px-6 py-4 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500/20 transition-all text-gray-900" 
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-bold text-gray-700 ml-2 mb-2">Vaqt</label>
+            <select 
+              value={time}
+              onChange={(e) => setTime(e.target.value)}
+              className="w-full bg-gray-50 border border-transparent hover:border-blue-100 px-6 py-4 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500/20 transition-all cursor-pointer text-gray-900"
+            >
+              <option value="09:00">09:00</option>
+              <option value="10:00">10:00</option>
+              <option value="11:00">11:00</option>
+              <option value="14:00">14:00</option>
+              <option value="15:00">15:00</option>
+              <option value="16:00">16:00</option>
+            </select>
+          </div>
+        </div>
+
+        {/* Xabarlar qismi */}
+        {status.type && (
+          <div className={`p-4 rounded-2xl flex items-center gap-3 ${status.type === 'success' ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'}`}>
+            {status.type === 'success' ? <CheckCircle2 size={20} /> : <AlertCircle size={20} />}
+            <span className="font-medium text-sm">{status.text}</span>
+          </div>
+        )}
+
+        {/* Yuborish tugmasi */}
+        <button 
+          type="submit" 
+          disabled={isLoading}
+          className="w-full bg-blue-600 text-white py-5 rounded-2xl font-bold text-lg shadow-lg shadow-blue-500/30 hover:bg-blue-700 hover:shadow-xl active:scale-95 transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+        >
+          {isLoading ? (
+             <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+          ) : (
+            "Band qilishni tasdiqlash"
+          )}
+        </button>
+      </form>
+    </div>
+  );
+};
+
+export default Booking;
