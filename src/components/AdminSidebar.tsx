@@ -1,10 +1,8 @@
 import { Link, useLocation } from 'react-router-dom';
-import { LayoutDashboard, Users, CalendarDays, Stethoscope, Settings, LogOut } from 'lucide-react';
-import { useAuth } from '../context/AuthContext';
+import { LayoutDashboard, Users, CalendarDays, Stethoscope, Settings } from 'lucide-react';
 
 const AdminSidebar = () => {
   const { pathname } = useLocation();
-  const { logout } = useAuth();
 
   const menuItems = [
     { name: 'Dashboard', path: '/admin', icon: LayoutDashboard },
@@ -41,17 +39,6 @@ const AdminSidebar = () => {
           </Link>
         ))}
       </nav>
-
-      {/* Chiqish tugmasi */}
-      <div className="p-4 border-t border-gray-800">
-        <button 
-          onClick={logout}
-          className="w-full flex items-center gap-4 px-4 py-3 rounded-xl text-red-400 hover:bg-red-500/10 hover:text-red-300 transition-all font-bold"
-        >
-          <LogOut size={20} />
-          <span>Tizimdan chiqish</span>
-        </button>
-      </div>
     </aside>
   );
 };

@@ -25,6 +25,7 @@ import Profile from "./pages/patient/Profile";
 // Admin Pages (Boshqaruv paneli sahifalari)
 import Dashboard from "./pages/admin/Dashboard";
 import Appointments from "./pages/admin/Appointments";
+import AdminSettings from "./pages/admin/AdminSettings";
 
 /**
  * App Komponenti - Loyihaning asosiy marshrutizatsiya (Routing) qismi.
@@ -83,6 +84,9 @@ const App = () => {
           
           {/* YANGA QO'SHILGAN QABULLAR SAHIFASI */}
           <Route path="qabullar" element={<Appointments />} />
+
+          {/* PROFIL SOZLAMALARI SAHIFASI */}
+          <Route path="sozlamalar" element={<AdminSettings />} />
         </Route>
 
       </Routes>
