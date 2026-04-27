@@ -1,21 +1,30 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+// Components
+import ScrollToTop from "./components/ScrollToTop";
+
 
 // Layouts
-import UserLayout from "./layouts/UserLayout"
+import UserLayout from "./layouts/UserLayout";
+import AdminLayout from "./layouts/AdminLayout"; // <-- Admin layout
 
 // Public Pages (Hamma ko'radigan)
-import Home from "./pages/public/Home"
-import Services from "./pages/public/Services"
-import About from "./pages/public/About"
-import Contact from "./pages/public/Contact"
+import Home from "./pages/public/Home";
+import Services from "./pages/public/Services";
+import About from "./pages/public/About";
+import Contact from "./pages/public/Contact";
 
 // Auth Pages (Login va Ro'yxatdan o'tish)
-import Login from "./pages/auth/Login"
-import Register from "./pages/auth/Register"
+import Login from "./pages/auth/Login";
+import Register from "./pages/auth/Register";
 
 // Private/Patient Pages (Bemor sahifalari)
-import Booking from "./pages/patient/Booking"
-import Profile from "./pages/patient/Profile"
+import Booking from "./pages/patient/Booking";
+import Profile from "./pages/patient/Profile";
+
+// Admin Pages (Boshqaruv paneli sahifalari)
+import Dashboard from "./pages/admin/Dashboard";
+import Appointments from "./pages/admin/Appointments";
 
 /**
  * App Komponenti - Loyihaning asosiy marshrutizatsiya (Routing) qismi.
@@ -24,10 +33,14 @@ import Profile from "./pages/patient/Profile"
 const App = () => {
   return (
     <Router>
+      {/* Har safar URL o'zgarganda sahifani tepaga (0,0) qaytaradi */}
+      <ScrollToTop />
+
       <Routes>
-        {/* 1. Foydalanuvchi qismi (UserLayout bilan o'ralgan) 
-            Bu yo'llarda Sidebar va Bottom Navigation doim ko'rinib turadi.
-        */}
+        {/* ==========================================
+            1. FOYDALANUVCHI QISMI (UserLayout) 
+            Sidebar va Header doim ko'rinib turadi
+        ========================================== */}
         <Route path="/" element={<UserLayout />}>
           {/* Asosiy sahifa */}
           <Route index element={<Home />} />
@@ -48,16 +61,33 @@ const App = () => {
           <Route path="profil" element={<Profile />} />
         </Route>
 
-        {/* 2. Avtorizatsiya qismi (Layoutsiz - To'liq ekran) */}
 
+        {/* ==========================================
+            2. AVTORIZATSIYA (Layoutsiz)
+            To'liq ekranli sahifalar
+        ========================================== */}
         {/* Tizimga kirish */}
         <Route path="/login" element={<Login />} />
 
         {/* Yangi profil yaratish */}
         <Route path="/register" element={<Register />} />
+
+
+        {/* ==========================================
+            3. ADMIN PANEL QISMI (AdminLayout)
+            Faqat adminlar uchun maxsus layout
+        ========================================== */}
+        <Route path="/admin" element={<AdminLayout />}>
+          {/* Asosiy statistika sahifasi */}
+          <Route index element={<Dashboard />} />
+          
+          {/* YANGA QO'SHILGAN QABULLAR SAHIFASI */}
+          <Route path="qabullar" element={<Appointments />} />
+        </Route>
+
       </Routes>
     </Router>
-  )
-}
+  );
+};
 
-export default App
+export default App;

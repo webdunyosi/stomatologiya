@@ -20,10 +20,31 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
 
-  // Dastlab xotiradan foydalanuvchini tekshirish
   useEffect(() => {
+    // 1. Xotiradagi barcha foydalanuvchilarni olamiz
+    const existingUsersString = localStorage.getItem('users');
+    let users = existingUsersString ? JSON.parse(existingUsersString) : [];
+
+    // 2. Ularning ichida 'admin' roliga ega odam bormi tekshiramiz
+    const adminExists = users.some((u: User) => u.role === 'admin');
+
+    // 3. Agar admin yo'q bo'lsa, uni ro'yxatga qo'shib qo'yamiz
+    if (!adminExists) {
+      const defaultAdmin = {
+        name: "Asosiy Administrator",
+        phone: "+998901112233",
+        password: "admin",
+        role: "admin"
+      };
+      users.push(defaultAdmin);
+      localStorage.setItem('users', JSON.stringify(users));
+    }
+
+    // 4. Tizimga kirgan activeUser bo'lsa, uni tiklaymiz
     const savedUser = localStorage.getItem('activeUser');
-    if (savedUser) setUser(JSON.parse(savedUser));
+    if (savedUser) {
+      setUser(JSON.parse(savedUser));
+    }
   }, []);
 
   // Login funksiyasi
@@ -43,7 +64,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   // Ro'yxatdan o'tish funksiyasi
   const register = (name: string, phone: string, password: string) => {
     const users = JSON.parse(localStorage.getItem('users') || '[]');
-    const newUser = { name, phone, password, role: 'user' };
+    const newUser = { name, phone, password, role: 'user' }; 
     users.push(newUser);
     localStorage.setItem('users', JSON.stringify(users));
   };
