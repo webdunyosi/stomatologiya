@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Bell, CalendarDays, UserPlus, AlertCircle, CheckCircle2, Trash2 } from 'lucide-react';
+import { Bell, CalendarDays, UserPlus, AlertCircle, CheckCircle2 } from 'lucide-react';
 
 const Notifications = () => {
   const [activeTab, setActiveTab] = useState('all'); // 'all' yoki 'unread'

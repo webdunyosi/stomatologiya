@@ -3,7 +3,6 @@ import {
   LayoutDashboard, 
   Users, 
   CalendarDays, 
-  Stethoscope, 
   Bell, 
   PlusCircle 
 } from 'lucide-react';

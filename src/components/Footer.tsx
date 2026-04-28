@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 
 const Footer = () => {
+  // Yilni dinamik olish
   const currentYear = new Date().getFullYear();
 
   return (
@@ -26,7 +27,6 @@ const Footer = () => {
             2010-yildan buyon bemorlarimizga yuqori sifatli stomatologik xizmat ko'rsatib kelmoqdamiz.
           </p>
           <div className="flex gap-4">
-            {/* Ijtimoiy tarmoq ikonkalari o'rniga Share/Globe ishlatamiz xato chiqmasligi uchun */}
             <a href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 transition-all">
               <Globe size={18} />
             </a>
@@ -68,7 +68,13 @@ const Footer = () => {
             <li className="flex gap-3"><Mail size={18} className="text-blue-500"/> info@stoma.uz</li>
           </ul>
         </div>
+      </div>
 
+      {/* Mualliflik huquqi bo'limi - Yil shu yerda ishlatildi */}
+      <div className="border-t border-gray-800 py-8">
+        <div className="max-w-7xl mx-auto px-4 text-center text-sm">
+          <p>&copy; {currentYear} StomaCare. Barcha huquqlar himoyalangan.</p>
+        </div>
       </div>
     </footer>
   );
