@@ -30,6 +30,7 @@ import Patients from "./pages/admin/Patients";
 import Doctors from "./pages/admin/Doctors";
 import Notifications from "./pages/admin/Notifications";
 import AdminAddAppointment from "./pages/admin/AdminAddAppointment";
+import { Toaster } from "react-hot-toast";
 
 /**
  * App Komponenti - Loyihaning asosiy marshrutizatsiya (Routing) qismi.
@@ -40,6 +41,9 @@ const App = () => {
     <Router>
       {/* Har safar URL o'zgarganda sahifani tepaga (0,0) qaytaradi */}
       <ScrollToTop />
+
+      {/* 2. Toaster komponentini istalgan joyga qo'shing */}
+      <Toaster position="top-center" reverseOrder={false} />
 
       <Routes>
         {/* ==========================================

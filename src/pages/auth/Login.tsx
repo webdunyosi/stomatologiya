@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Phone, Lock } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
+import { toast } from 'react-hot-toast';
 
 const Login = () => {
   const [phone, setPhone] = useState('');
@@ -14,17 +15,28 @@ const Login = () => {
     const success = login(phone, password);
     
     if (success) {
-      // Login muvaffaqiyatli bo'lsa, xotiradan foydalanuvchi ma'lumotlarini olamiz
+      // Muvaffaqiyatli xabar
+      toast.success("Xush kelibsiz!", {
+        duration: 3000,
+        icon: '👋',
+      });
+
       const activeUser = JSON.parse(localStorage.getItem('activeUser') || '{}');
       
-      // Roliga qarab tegishli sahifaga yo'naltiramiz
       if (activeUser.role === 'admin') {
-        navigate('/admin'); // Admin panelga
+        navigate('/admin');
       } else {
-        navigate('/'); // Bemorlar sahifasiga (Asosiy)
+        navigate('/');
       }
     } else {
-      alert("Telefon raqam yoki parol xato!");
+      // Xatolik xabari
+      toast.error("Telefon raqam yoki parol xato!", {
+        style: {
+          borderRadius: '12px',
+          background: '#333',
+          color: '#fff',
+        },
+      });
     }
   };
 
@@ -34,7 +46,6 @@ const Login = () => {
         <h1 className="text-3xl font-black text-blue-900 mb-2">Xush kelibsiz!</h1>
         <form className="space-y-6 mt-10" onSubmit={handleLogin}>
           
-          {/* Telefon raqam kiritish */}
           <div className="relative">
             <Phone className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
             <input 
@@ -47,7 +58,6 @@ const Login = () => {
             />
           </div>
 
-          {/* Parol kiritish */}
           <div className="relative">
             <Lock className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
             <input 
@@ -60,7 +70,6 @@ const Login = () => {
             />
           </div>
 
-          {/* Kirish tugmasi */}
           <button 
             type="submit" 
             className="w-full bg-blue-600 text-white py-4 rounded-2xl font-bold text-lg hover:bg-blue-700 transition-all active:scale-95 shadow-lg shadow-blue-500/30"
