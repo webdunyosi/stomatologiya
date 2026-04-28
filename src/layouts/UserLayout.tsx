@@ -5,7 +5,7 @@ import Header from '../components/Header';
 
 const UserLayout = () => {
   return (
-    <div className="flex min-h-screen bg-gray-50 text-gray-900 font-sans">
+    <div className="bg-gray-50 text-gray-900 font-sans">
       {/* Sidebar - Faqat Desktop uchun (lg: o'lchamda ko'rinadi) */}
       <aside className="hidden lg:flex w-72 bg-gradient-to-b from-blue-600 to-indigo-700 text-white flex-col fixed h-full shadow-2xl">
         <Sidebar />
