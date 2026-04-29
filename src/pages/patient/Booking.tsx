@@ -27,7 +27,7 @@ const servicesData = {
 const getTodayDate = () => {
   const today = new Date();
   const yyyy = today.getFullYear();
-  const mm = String(today.getMonth() + 1).padStart(2, '0'); // Oylar 0 dan boshlanadi, shuning uchun +1
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
   const dd = String(today.getDate()).padStart(2, '0');
   return `${yyyy}-${mm}-${dd}`;
 };
@@ -42,7 +42,6 @@ const Booking = () => {
   
   // SANANI AVTOMATIK BUGUNGI KUN QILIB BELGILASH
   const [date, setDate] = useState(getTodayDate()); 
-  
   const [time, setTime] = useState('09:00');
   
   const [isLoading, setIsLoading] = useState(false);
@@ -96,7 +95,6 @@ const Booking = () => {
       if (response.ok) {
         setStatus({ type: 'success', text: "Qabul muvaffaqiyatli band qilindi! Tez orada xodimlarimiz siz bilan bog'lanishadi." });
         
-        // Qabul tugagach yana bugungi sanani qaytarib qo'yamiz
         setDate(getTodayDate());
         setTime('09:00');
         setService(servicesData["Terapevtik xizmatlar"][0]); 
@@ -111,21 +109,24 @@ const Booking = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto space-y-8 bg-white p-8 md:p-12 rounded-[40px] shadow-sm border border-gray-100 animate-in fade-in zoom-in-95 duration-500">
+    // ASOSIY QUTI PADDINGLARI IXCHAMLASHTIRILDI (p-5 sm:p-8)
+    <div className="max-w-3xl mx-auto space-y-6 sm:space-y-8 bg-white p-5 sm:p-8 md:p-12 rounded-[32px] sm:rounded-[40px] shadow-sm border border-gray-100 animate-in fade-in zoom-in-95 duration-500 mb-0 sm:mb-0">
+      
       <div className="text-center">
-        <h2 className="text-3xl font-black text-blue-900">Qabulga yozilish</h2>
-        <p className="text-gray-500 mt-2">O'zingizga qulay xizmat, vaqt va shifokorni tanlang</p>
+        <h2 className="text-2xl sm:text-3xl font-black text-blue-900">Qabulga yozilish</h2>
+        <p className="text-sm sm:text-base text-gray-500 mt-1.5">O'zingizga qulay xizmat, vaqt va shifokorni tanlang</p>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-5">
         
         {/* Xizmat turi tanlash */}
         <div>
-          <label className="block text-sm font-bold text-gray-700 ml-2 mb-2">Xizmat turini tanlang</label>
+          <label className="block text-xs sm:text-sm font-bold text-gray-700 ml-2 mb-1.5">Xizmat turini tanlang</label>
           <select 
             value={service}
             onChange={(e) => setService(e.target.value)}
-            className="w-full bg-gray-50 border border-transparent hover:border-blue-100 px-6 py-4 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500/20 transition-all cursor-pointer text-gray-900 font-medium"
+            // PADDINGLAR IXCHAMLASHTIRILDI (py-3.5)
+            className="w-full bg-gray-50 border border-transparent hover:border-blue-100 px-5 py-3.5 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500/20 transition-all cursor-pointer text-sm sm:text-base text-gray-900 font-medium"
           >
             {Object.entries(servicesData).map(([category, services]) => (
               <optgroup key={category} label={category} className="font-bold text-blue-600 bg-white">
@@ -139,11 +140,11 @@ const Booking = () => {
 
         {/* Shifokor tanlash */}
         <div>
-          <label className="block text-sm font-bold text-gray-700 ml-2 mb-2">Shifokorni tanlang</label>
+          <label className="block text-xs sm:text-sm font-bold text-gray-700 ml-2 mb-1.5">Shifokorni tanlang</label>
           <select 
             value={doctor}
             onChange={(e) => setDoctor(e.target.value)}
-            className="w-full bg-gray-50 border border-transparent hover:border-blue-100 px-6 py-4 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500/20 transition-all cursor-pointer text-gray-900 font-medium"
+            className="w-full bg-gray-50 border border-transparent hover:border-blue-100 px-5 py-3.5 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500/20 transition-all cursor-pointer text-sm sm:text-base text-gray-900 font-medium"
           >
             <option value="Dr. Jamshid Tursunov (Ortodont)">Dr. Jamshid Tursunov (Ortodont)</option>
             <option value="Dr. Saida Karimova (Terapevt)">Dr. Saida Karimova (Terapevt)</option>
@@ -152,23 +153,23 @@ const Booking = () => {
         </div>
 
         {/* Sana va Vaqt */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           <div>
-            <label className="block text-sm font-bold text-gray-700 ml-2 mb-2">Sana</label>
+            <label className="block text-xs sm:text-sm font-bold text-gray-700 ml-2 mb-1.5">Sana</label>
             <input 
               type="date" 
               value={date}
-              min={getTodayDate()} // O'tib ketgan kunlarni tanlashni taqiqlash (ixtiyoriy)
+              min={getTodayDate()} 
               onChange={(e) => setDate(e.target.value)}
-              className="w-full bg-gray-50 border border-transparent hover:border-blue-100 px-6 py-4 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500/20 transition-all text-gray-900 font-medium cursor-pointer" 
+              className="w-full bg-gray-50 border border-transparent hover:border-blue-100 px-5 py-3.5 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500/20 transition-all text-sm sm:text-base text-gray-900 font-medium cursor-pointer" 
             />
           </div>
           <div>
-            <label className="block text-sm font-bold text-gray-700 ml-2 mb-2">Vaqt</label>
+            <label className="block text-xs sm:text-sm font-bold text-gray-700 ml-2 mb-1.5">Vaqt</label>
             <select 
               value={time}
               onChange={(e) => setTime(e.target.value)}
-              className="w-full bg-gray-50 border border-transparent hover:border-blue-100 px-6 py-4 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500/20 transition-all cursor-pointer text-gray-900 font-medium"
+              className="w-full bg-gray-50 border border-transparent hover:border-blue-100 px-5 py-3.5 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500/20 transition-all cursor-pointer text-sm sm:text-base text-gray-900 font-medium"
             >
               <option value="09:00">09:00</option>
               <option value="10:00">10:00</option>
@@ -184,17 +185,18 @@ const Booking = () => {
         {status.type && (
           <div className={`p-4 rounded-2xl flex items-center gap-3 ${status.type === 'success' ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'}`}>
             {status.type === 'success' ? <CheckCircle2 size={20} /> : <AlertCircle size={20} />}
-            <span className="font-medium text-sm">{status.text}</span>
+            <span className="font-medium text-xs sm:text-sm">{status.text}</span>
           </div>
         )}
 
         <button 
           type="submit" 
           disabled={isLoading}
-          className="w-full bg-blue-600 text-white py-5 rounded-2xl font-bold text-lg shadow-lg shadow-blue-500/30 hover:bg-blue-700 hover:shadow-xl active:scale-95 transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+          // TUGMA HAM IXCHAMLASHTIRILDI (py-4)
+          className="w-full bg-blue-600 text-white py-4 rounded-2xl font-bold text-base sm:text-lg shadow-lg shadow-blue-500/30 hover:bg-blue-700 hover:shadow-xl active:scale-95 transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed mt-2"
         >
           {isLoading ? (
-             <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+             <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
           ) : (
             "Band qilishni tasdiqlash"
           )}
