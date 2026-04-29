@@ -49,7 +49,7 @@ const Home = () => {
   ]
 
   return (
-    <div className="max-w-7xl mx-auto space-y-16 pb-24 md:pb-12 animate-in fade-in duration-700">
+    <div className="max-w-7xl mx-auto space-y-16 pb-6 md:pb-12 animate-in fade-in duration-700">
       {/* 1. HERO BANNER - Ixchamlashtirilgan va Animatsiyalangan */}
       <section className="relative bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-800 rounded-[32px] md:rounded-[48px] p-6 md:p-10 lg:p-12 overflow-hidden shadow-2xl shadow-blue-600/30 text-white mt-4 mx-2 md:mx-0 group animate-in fade-in slide-in-from-bottom-4 duration-700">
         {/* Orqa fon animatsion effektlari */}
@@ -141,7 +141,7 @@ const Home = () => {
       </section>
 
       {/* 2. AFZALLIKLARIMIZ (Silliq animatsiyalar bilan takomillashtirilgan) */}
-      <section className="px-4">
+      <section className="p-0 md:p-4 mx-2 md:mx-0">
         <div className="text-center mb-12 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">
           <h2 className="text-3xl lg:text-4xl font-black text-gray-900">
             Nega aynan StomaCare?
@@ -193,7 +193,7 @@ const Home = () => {
       </section>
 
       {/* 3. MASHHUR XIZMATLAR (Endi Xizmatlar sahifasidagi dizaynda!) */}
-      <section className="bg-gray-50 rounded-[40px] p-8 md:p-12 mx-2 md:mx-0">
+      <section className="bg-gray-50 rounded-[40px] p-0 md:p-4 mx-2 md:mx-0">
         <div className="flex flex-col md:flex-row justify-between items-end gap-6 mb-10">
           <div>
             <h2 className="text-3xl font-black text-gray-900">
@@ -282,7 +282,7 @@ const Home = () => {
       </section>
 
       {/* 4. SHOSHILINCH ALOQA BLOKI */}
-      <section className="px-4">
+      <section className="p-0 md:p-4 mx-2 md:mx-0">
         <div className="bg-gradient-to-r from-blue-900 to-blue-800 rounded-[40px] p-8 md:p-12 text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden shadow-2xl shadow-blue-900/20">
           {/* Orqa fon bezaklari (Glow effektlari) */}
           <div className="absolute top-0 right-0 w-80 h-80 bg-blue-500 rounded-full blur-[80px] opacity-40 -mr-20 -mt-20 pointer-events-none"></div>
@@ -312,7 +312,7 @@ const Home = () => {
             {/* LIQUID GLASS TUGMA - YORQIN VA ANIMATSIYALI */}
             <a
               href="tel:+998711234567"
-              className="group relative w-full md:w-auto inline-flex items-center justify-center gap-4 px-8 py-5 bg-white rounded-2xl text-blue-900 font-black text-xl shadow-[0_8px_30px_rgb(0,0,0,0.15)] hover:shadow-blue-400/50 hover:-translate-y-1 hover:scale-[1.02] active:scale-95 transition-all duration-500 ease-out overflow-hidden"
+              className="group relative w-full md:w-auto inline-flex items-center justify-center gap-4 px-3 md:px-8 py-4 md:py-5 bg-white rounded-2xl text-blue-900 font-black text-lg md:text-xl shadow-[0_8px_30px_rgb(0,0,0,0.15)] hover:shadow-blue-400/50 hover:-translate-y-1 hover:scale-[1.02] active:scale-95 transition-all duration-500 ease-out overflow-hidden"
             >
               {/* Oqib o'tuvchi yorug'lik effekti (Liquid Shine) */}
               <div className="absolute inset-0 -translate-x-[150%] group-hover:translate-x-[150%] transition-transform duration-1000 ease-in-out bg-gradient-to-r from-transparent via-blue-50/60 to-transparent -skew-x-12 z-0 pointer-events-none"></div>
