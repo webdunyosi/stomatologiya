@@ -1,4 +1,4 @@
-import { Search, User, LogOut, ChevronDown } from 'lucide-react';
+import { User, LogOut, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useState } from 'react';
@@ -10,25 +10,13 @@ const Header = () => {
   return (
     <header className="px-4 py-4 md:px-8 flex items-center justify-between bg-white/70 backdrop-blur-md sticky top-0 z-40 border-b border-gray-100/50">
       
-      {/* 1. Qidiruv paneli - Zamonaviy dizayn */}
-      <div className="relative max-w-md flex-1 hidden md:block">
-        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-          <Search className="h-5 w-5 text-gray-400" />
-        </div>
-        <input 
-          type="text" 
-          placeholder="Xizmatlar, shifokorlar qidiruvi..." 
-          className="w-full bg-gray-100/50 border border-transparent focus:border-blue-500/30 focus:bg-white pl-11 pr-4 py-2.5 rounded-2xl outline-none transition-all duration-300 text-sm"
-        />
-      </div>
-
-      {/* Mobil logo (Sidebar yo'q paytda ko'rinishi uchun) */}
-      <div className="lg:hidden font-black text-2xl tracking-tighter text-blue-600">
+      {/* 1. Mobil logotip (Kompyuterda yashirinadi, chunki yon panelda logo bor) */}
+      <div className="md:hidden font-black text-2xl tracking-tighter text-blue-600">
         Stoma<span className="text-gray-900">Care</span>
       </div>
 
-      {/* 2. Profil va Kirish qismi */}
-      <div className="flex items-center gap-4">
+      {/* 2. Profil va Kirish qismi (Hamma vaqt o'ng tarafda turadi) */}
+      <div className="flex items-center gap-4 ml-auto">
         {isAuthenticated ? (
           /* LOGIN QILGAN FOYDALANUVCHI UCHUN */
           <div className="relative">
