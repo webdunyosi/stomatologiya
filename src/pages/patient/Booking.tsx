@@ -1,27 +1,65 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { CheckCircle2, AlertCircle } from 'lucide-react';
 
+// Xizmatlar bazasi
+const servicesData = {
+  "Terapevtik xizmatlar": [
+    "Konsultatsiya va ko'rik",
+    "Tish tozalash (Air Flow)",
+    "Kariesni davolash va plomba",
+    "Tish oqartirish (Zoom 4)"
+  ],
+  "Jarrohlik xizmatlari": [
+    "Aql tishini sug'urish",
+    "Oddiy tishni sug'urish",
+    "Tish implantatsiyasi"
+  ],
+  "Ortodontik xizmatlar": [
+    "Metall breketlar o'rnatish",
+    "Kapa (Invisalign) bilan davolash",
+    "Breketlarni to'g'rilash"
+  ]
+};
+
+// Bugungi sanani "YYYY-MM-DD" formatida olish uchun funksiya
+const getTodayDate = () => {
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, '0'); // Oylar 0 dan boshlanadi, shuning uchun +1
+  const dd = String(today.getDate()).padStart(2, '0');
+  return `${yyyy}-${mm}-${dd}`;
+};
+
 const Booking = () => {
-  const { user } = useAuth(); // Profilga kirgan foydalanuvchi ma'lumotlarini olish
+  const { user } = useAuth(); 
+  const location = useLocation();
   
   // Form inputlari uchun state'lar
+  const [service, setService] = useState(servicesData["Terapevtik xizmatlar"][0]);
   const [doctor, setDoctor] = useState('Dr. Jamshid Tursunov (Ortodont)');
-  const [date, setDate] = useState('');
+  
+  // SANANI AVTOMATIK BUGUNGI KUN QILIB BELGILASH
+  const [date, setDate] = useState(getTodayDate()); 
+  
   const [time, setTime] = useState('09:00');
   
-  // Yuklanish va xabarlar uchun
   const [isLoading, setIsLoading] = useState(false);
   const [status, setStatus] = useState<{ type: 'success' | 'error' | null; text: string }>({ type: null, text: '' });
 
-  // Telegram bot ma'lumotlari
   const BOT_TOKEN = '8664236528:AAHYozJSlLSJ1_nn-cktvcPRknQ4b4dif7I';
   const CHAT_ID = '5414733748';
+
+  useEffect(() => {
+    if (location.state && location.state.selectedService) {
+      setService(location.state.selectedService);
+    }
+  }, [location.state]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Sanani kiritmagan bo'lsa xato berish
     if (!date) {
       setStatus({ type: 'error', text: 'Iltimos, sanani tanlang!' });
       return;
@@ -30,13 +68,13 @@ const Booking = () => {
     setIsLoading(true);
     setStatus({ type: null, text: '' });
 
-    // Telegramga yuboriladigan xabar matni (HTML formatida)
     const text = `
 🏥 <b>Yangi qabul so'rovi!</b>
 
 👤 <b>Bemor:</b> ${user?.name || "Noma'lum"}
 📞 <b>Telefon:</b> ${user?.phone || "Noma'lum"}
 
+🩺 <b>Xizmat turi:</b> ${service}
 👨‍⚕️ <b>Shifokor:</b> ${doctor}
 📅 <b>Sana:</b> ${date}
 ⏰ <b>Vaqt:</b> ${time}
@@ -57,9 +95,11 @@ const Booking = () => {
 
       if (response.ok) {
         setStatus({ type: 'success', text: "Qabul muvaffaqiyatli band qilindi! Tez orada xodimlarimiz siz bilan bog'lanishadi." });
-        // Formani tozalash
-        setDate('');
+        
+        // Qabul tugagach yana bugungi sanani qaytarib qo'yamiz
+        setDate(getTodayDate());
         setTime('09:00');
+        setService(servicesData["Terapevtik xizmatlar"][0]); 
       } else {
         setStatus({ type: 'error', text: "Xatolik yuz berdi. Iltimos qaytadan urinib ko'ring." });
       }
@@ -74,18 +114,36 @@ const Booking = () => {
     <div className="max-w-3xl mx-auto space-y-8 bg-white p-8 md:p-12 rounded-[40px] shadow-sm border border-gray-100 animate-in fade-in zoom-in-95 duration-500">
       <div className="text-center">
         <h2 className="text-3xl font-black text-blue-900">Qabulga yozilish</h2>
-        <p className="text-gray-500 mt-2">O'zingizga qulay vaqt va shifokorni tanlang</p>
+        <p className="text-gray-500 mt-2">O'zingizga qulay xizmat, vaqt va shifokorni tanlang</p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
         
+        {/* Xizmat turi tanlash */}
+        <div>
+          <label className="block text-sm font-bold text-gray-700 ml-2 mb-2">Xizmat turini tanlang</label>
+          <select 
+            value={service}
+            onChange={(e) => setService(e.target.value)}
+            className="w-full bg-gray-50 border border-transparent hover:border-blue-100 px-6 py-4 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500/20 transition-all cursor-pointer text-gray-900 font-medium"
+          >
+            {Object.entries(servicesData).map(([category, services]) => (
+              <optgroup key={category} label={category} className="font-bold text-blue-600 bg-white">
+                {services.map((item, idx) => (
+                  <option key={idx} value={item} className="text-gray-900 font-medium">{item}</option>
+                ))}
+              </optgroup>
+            ))}
+          </select>
+        </div>
+
         {/* Shifokor tanlash */}
         <div>
           <label className="block text-sm font-bold text-gray-700 ml-2 mb-2">Shifokorni tanlang</label>
           <select 
             value={doctor}
             onChange={(e) => setDoctor(e.target.value)}
-            className="w-full bg-gray-50 border border-transparent hover:border-blue-100 px-6 py-4 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500/20 transition-all cursor-pointer text-gray-900"
+            className="w-full bg-gray-50 border border-transparent hover:border-blue-100 px-6 py-4 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500/20 transition-all cursor-pointer text-gray-900 font-medium"
           >
             <option value="Dr. Jamshid Tursunov (Ortodont)">Dr. Jamshid Tursunov (Ortodont)</option>
             <option value="Dr. Saida Karimova (Terapevt)">Dr. Saida Karimova (Terapevt)</option>
@@ -100,8 +158,9 @@ const Booking = () => {
             <input 
               type="date" 
               value={date}
+              min={getTodayDate()} // O'tib ketgan kunlarni tanlashni taqiqlash (ixtiyoriy)
               onChange={(e) => setDate(e.target.value)}
-              className="w-full bg-gray-50 border border-transparent hover:border-blue-100 px-6 py-4 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500/20 transition-all text-gray-900" 
+              className="w-full bg-gray-50 border border-transparent hover:border-blue-100 px-6 py-4 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500/20 transition-all text-gray-900 font-medium cursor-pointer" 
             />
           </div>
           <div>
@@ -109,7 +168,7 @@ const Booking = () => {
             <select 
               value={time}
               onChange={(e) => setTime(e.target.value)}
-              className="w-full bg-gray-50 border border-transparent hover:border-blue-100 px-6 py-4 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500/20 transition-all cursor-pointer text-gray-900"
+              className="w-full bg-gray-50 border border-transparent hover:border-blue-100 px-6 py-4 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500/20 transition-all cursor-pointer text-gray-900 font-medium"
             >
               <option value="09:00">09:00</option>
               <option value="10:00">10:00</option>
@@ -129,7 +188,6 @@ const Booking = () => {
           </div>
         )}
 
-        {/* Yuborish tugmasi */}
         <button 
           type="submit" 
           disabled={isLoading}
