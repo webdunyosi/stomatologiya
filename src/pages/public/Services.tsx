@@ -75,7 +75,7 @@ const Services = () => {
     : allServices.filter(service => service.category === activeCategory);
 
   return (
-    <div className="max-w-7xl mx-auto px-1 sm:px-4 py-6 pb-24 md:pb-10 space-y-8 animate-in fade-in duration-500">
+    <div className="max-w-7xl mx-auto px-1 sm:px-4 py-6 pb-0 md:pb-10 space-y-8 animate-in fade-in duration-500">
       
       {/* Sarlavha */}
       <div className="flex flex-col gap-4 px-3 sm:px-0">
@@ -100,7 +100,7 @@ const Services = () => {
       </div>
 
       {/* Xizmatlar Gridi */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 px-3 sm:px-0">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 px-0 md:px-3 sm:px-0">
         {filteredServices.length > 0 ? (
           filteredServices.map((service) => (
             <div key={service.id} className="bg-white p-4 rounded-[30px] shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-50 flex flex-col">

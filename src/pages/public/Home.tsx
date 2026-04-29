@@ -49,7 +49,7 @@ const Home = () => {
   ]
 
   return (
-    <div className="max-w-7xl mx-auto space-y-16 pb-6 md:pb-12 animate-in fade-in duration-700">
+    <div className="max-w-7xl mx-auto space-y-16 pb-0 md:pb-12 animate-in fade-in duration-700">
       {/* 1. HERO BANNER - Ixchamlashtirilgan va Animatsiyalangan */}
       <section className="relative bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-800 rounded-[32px] md:rounded-[48px] p-6 md:p-10 lg:p-12 overflow-hidden shadow-2xl shadow-blue-600/30 text-white mt-4 mx-2 md:mx-0 group animate-in fade-in slide-in-from-bottom-4 duration-700">
         {/* Orqa fon animatsion effektlari */}
