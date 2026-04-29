@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
 // Components
 import ScrollToTop from "./components/ScrollToTop";
-
 
 // Layouts
 import UserLayout from "./layouts/UserLayout";
@@ -13,6 +13,7 @@ import Home from "./pages/public/Home";
 import Services from "./pages/public/Services";
 import About from "./pages/public/About";
 import Contact from "./pages/public/Contact";
+import PublicDoctors from "./pages/public/Doctors"; // <-- YANGA QO'SHILDI (Mijozlar ko'radigan Shifokorlar)
 
 // Auth Pages (Login va Ro'yxatdan o'tish)
 import Login from "./pages/auth/Login";
@@ -27,10 +28,9 @@ import Dashboard from "./pages/admin/Dashboard";
 import Appointments from "./pages/admin/Appointments";
 import AdminSettings from "./pages/admin/AdminSettings";
 import Patients from "./pages/admin/Patients";
-import Doctors from "./pages/admin/Doctors";
+import AdminDoctors from "./pages/admin/Doctors"; // Admin ko'radigan Shifokorlar (Nomlar chalkashmasligi uchun AdminDoctors deb atadik)
 import Notifications from "./pages/admin/Notifications";
 import AdminAddAppointment from "./pages/admin/AdminAddAppointment";
-import { Toaster } from "react-hot-toast";
 
 /**
  * App Komponenti - Loyihaning asosiy marshrutizatsiya (Routing) qismi.
@@ -42,7 +42,7 @@ const App = () => {
       {/* Har safar URL o'zgarganda sahifani tepaga (0,0) qaytaradi */}
       <ScrollToTop />
 
-      {/* 2. Toaster komponentini istalgan joyga qo'shing */}
+      {/* Toaster komponentini istalgan joyga qo'shing */}
       <Toaster position="top-center" reverseOrder={false} />
 
       <Routes>
@@ -56,6 +56,9 @@ const App = () => {
 
           {/* Xizmatlar ro'yxati */}
           <Route path="xizmatlar" element={<Services />} />
+
+          {/* YANGA QO'SHILDI: Shifokorlar ro'yxati */}
+          <Route path="shifokorlar" element={<PublicDoctors />} />
 
           {/* Klinika haqida ma'lumot */}
           <Route path="biz-haqimizda" element={<About />} />
@@ -90,22 +93,22 @@ const App = () => {
           {/* Asosiy statistika sahifasi */}
           <Route index element={<Dashboard />} />
           
-          {/* YANGA QO'SHILGAN QABULLAR SAHIFASI */}
+          {/* Qabullar sahifasi */}
           <Route path="qabullar" element={<Appointments />} />
 
-          {/* YANGA QO'SHILGAN: QABUL QO'SHISH SAHIFASI */}
+          {/* Qabul qo'shish sahifasi */}
           <Route path="qabullar/yangi" element={<AdminAddAppointment />} />
 
-          {/* YANGA QO'SHILGAN BEMORLAR SAHIFASI */}
+          {/* Bemorlar sahifasi */}
           <Route path="bemorlar" element={<Patients />} />
 
-          {/* YANGA QO'SHILGAN SHIFOKORLAR SAHIFASI */}
-          <Route path="shifokorlar" element={<Doctors />} />
+          {/* Shifokorlar sahifasi (Admin qismi) */}
+          <Route path="shifokorlar" element={<AdminDoctors />} />
 
-          {/* YANGA QO'SHILGAN BILDIRISHNOMALAR */}
+          {/* Bildirishnomalar */}
           <Route path="bildirishnomalar" element={<Notifications />} />
 
-          {/* PROFIL SOZLAMALARI SAHIFASI */}
+          {/* Profil sozlamalari sahifasi */}
           <Route path="sozlamalar" element={<AdminSettings />} />
         </Route>
 

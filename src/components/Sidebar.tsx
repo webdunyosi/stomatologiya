@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Home, Info, Stethoscope, Calendar, Phone, UserCircle } from 'lucide-react';
+import { Home, Info, Stethoscope, Calendar, Phone, UserCircle, Users } from 'lucide-react';
 
 const Sidebar = () => {
   const { pathname } = useLocation();
@@ -8,8 +8,9 @@ const Sidebar = () => {
   const menuItems = [
     { name: 'Asosiy', path: '/', icon: Home },
     { name: 'Xizmatlar', path: '/xizmatlar', icon: Stethoscope },
+    { name: 'Shifokorlar', path: '/shifokorlar', icon: Users }, // Yangi bo'lim qo'shildi
     { name: 'Qabul', path: '/qabul', icon: Calendar },
-    { name: 'Profil', path: '/profil', icon: UserCircle }, // Profil bo'limi qo'shildi
+    { name: 'Profil', path: '/profil', icon: UserCircle }, 
     { name: 'Haqida', path: '/biz-haqimizda', icon: Info },
     { name: 'Aloqa', path: '/aloqa', icon: Phone },
   ];
