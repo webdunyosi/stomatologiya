@@ -81,7 +81,7 @@ const Home = () => {
 
             {/* Qisqa matn */}
             <p className="text-blue-100 text-sm sm:text-base lg:text-lg max-w-md leading-relaxed opacity-90 animate-in slide-in-from-bottom-4 duration-700 delay-500">
-              Toshkentdagi eng zamonaviy uskunalarga ega xalqaro darajadagi
+              Navoiydagi eng zamonaviy uskunalarga ega xalqaro darajadagi
               stomatologiya klinikasi. Og'riqsiz davolash kafolati.
             </p>
 
