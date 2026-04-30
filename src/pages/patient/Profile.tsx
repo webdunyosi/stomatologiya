@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-// useAuth manzilingiz loyihangizdagi papka tuzilishiga qarab o'zgarishi mumkin:
+import { useNavigate, Link } from 'react-router-dom'; // Link qo'shildi
 import { useAuth } from '../../context/AuthContext'; 
 
 import { 
@@ -8,18 +7,19 @@ import {
   CalendarDays, Settings, LogOut, 
   MapPin, Stethoscope,
   Bell, Globe, MessageSquare, Smartphone,
-  Eye, EyeOff, CheckCircle2
+  Eye, EyeOff, CheckCircle2,
+  LogIn, UserPlus // Mehmon oynasi uchun ikonkalari qo'shildi
 } from 'lucide-react';
 
 const Profile = () => {
-  // Router va Auth hooklari (Tizimdan chiqish uchun)
   const navigate = useNavigate();
-  const { logout } = useAuth();
+  // useAuth dan user va isAuthenticated ni ham oldik
+  const { user, isAuthenticated, logout } = useAuth();
 
-  // Form ma'lumotlari
-  const [name, setName] = useState("Alimardon Toshpo'latov");
-  const [phone, setPhone] = useState("90 123 45 67");
-  const [email, setEmail] = useState("alimardon@example.com");
+  // Form ma'lumotlarini dinamik qilib user objectidan olamiz
+  const [name, setName] = useState(user?.name || "");
+  const [phone, setPhone] = useState(user?.phone || "");
+  const [email, setEmail] = useState(user?.email || "");
   
   // Tablar uchun state
   const [activeTab, setActiveTab] = useState('shaxsiy');
@@ -37,6 +37,15 @@ const Profile = () => {
   // ================= TOAST STATE VA FUNKSIYASI =================
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
+  // User ma'lumotlari yuklanganda inputlarni yangilash
+  useEffect(() => {
+    if (user) {
+      setName(user.name || "");
+      setPhone(user.phone || "");
+      setEmail(user.email || "");
+    }
+  }, [user]);
+
   // Toastni 3 soniyadan keyin avtomatik yopish
   useEffect(() => {
     if (toastMessage) {
@@ -49,7 +58,7 @@ const Profile = () => {
 
   // Tugma bosilganda ishlaydigan funksiya
   const handleSave = (e: React.FormEvent, message: string) => {
-    e.preventDefault(); // Formani sahifani yangilashdan to'xtatadi
+    e.preventDefault(); 
     setToastMessage(message);
   };
   // =============================================================
@@ -62,11 +71,12 @@ const Profile = () => {
       localStorage.removeItem('token'); 
       localStorage.removeItem('user');
     }
-    navigate('/'); // Asosiy sahifaga yo'naltirish
+    navigate('/'); 
   };
   // =============================================================
 
   const getInitials = (fullName: string) => {
+    if (!fullName) return 'U';
     return fullName.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
   };
 
@@ -77,8 +87,46 @@ const Profile = () => {
     { id: 'sozlamalar', icon: <Settings size={20} />, label: "Sozlamalar" },
   ];
 
+  // =============================================================
+  // 1. MEHMON (KIRMAGANLAR) UCHUN 2-RASMDAGI OYNA
+  // =============================================================
+  if (!isAuthenticated) {
+    return (
+      <div className="flex items-center justify-center min-h-[70vh] p-4">
+        <div className="bg-white rounded-[40px] shadow-sm border border-gray-100 p-10 md:p-16 max-w-2xl w-full text-center animate-in fade-in zoom-in-95 duration-500">
+          <div className="w-24 h-24 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-8 shadow-inner">
+            <User size={48} className="text-blue-400" />
+          </div>
+          <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4 tracking-tight">Xush kelibsiz!</h2>
+          <p className="text-gray-500 text-lg mb-10 max-w-md mx-auto leading-relaxed">
+            Shaxsiy profilingizni ko'rish, qabullaringizni boshqarish va xizmatlardan to'liq foydalanish uchun tizimga kiring.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link 
+              to="/login"
+              className="bg-blue-600 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-2 hover:bg-blue-700 transition-all active:scale-95 shadow-lg shadow-blue-600/30 w-full sm:w-auto"
+            >
+              <LogIn size={22} />
+              Tizimga kirish
+            </Link>
+            <Link 
+              to="/register"
+              className="bg-white text-blue-600 border border-blue-100 px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-2 hover:border-blue-600 hover:bg-blue-50 transition-all active:scale-95 w-full sm:w-auto"
+            >
+              <UserPlus size={22} />
+              Ro'yxatdan o'tish
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // =============================================================
+  // 2. RO'YXATDAN O'TGAN (BEMOR) UCHUN SIZNING KODINGIZ
+  // =============================================================
   return (
-    <div className="max-w-6xl mx-auto p-0 sm:p-6 lg:p-8 animate-in fade-in duration-500 relative">
+    <div className="max-w-6xl mx-auto p-0 sm:p-6 lg:p-8 animate-in fade-in duration-500 relative pb-20">
       
       {/* ================= TOAST NOTIFICATION UI ================= */}
       <div 
@@ -98,8 +146,8 @@ const Profile = () => {
 
       {/* 1. YUQORI PROFIL KARTASI */}
       <div className="bg-gradient-to-r from-blue-700 to-indigo-800 rounded-[32px] p-8 md:p-10 text-white shadow-xl shadow-blue-900/20 mb-8 relative overflow-hidden flex flex-col md:flex-row items-center gap-8">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-20 -mt-20"></div>
-        <div className="absolute bottom-0 left-0 w-40 h-40 bg-blue-400/20 rounded-full blur-2xl -ml-10 -mb-10"></div>
+        <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-20 -mt-20 pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-40 h-40 bg-blue-400/20 rounded-full blur-2xl -ml-10 -mb-10 pointer-events-none"></div>
         
         <div className="relative z-10 w-28 h-28 flex-shrink-0 bg-white text-blue-700 rounded-[28px] rotate-3 flex items-center justify-center shadow-2xl border-4 border-white/20">
           <span className="text-4xl font-black -rotate-3">{getInitials(name)}</span>
@@ -111,9 +159,11 @@ const Profile = () => {
             <span className="flex items-center gap-2 bg-black/10 px-4 py-1.5 rounded-full backdrop-blur-sm">
               <Phone size={16} /> +998 {phone}
             </span>
-            <span className="flex items-center gap-2 bg-black/10 px-4 py-1.5 rounded-full backdrop-blur-sm">
-              <Mail size={16} /> {email}
-            </span>
+            {email && (
+              <span className="flex items-center gap-2 bg-black/10 px-4 py-1.5 rounded-full backdrop-blur-sm">
+                <Mail size={16} /> {email}
+              </span>
+            )}
           </div>
         </div>
       </div>
@@ -199,7 +249,7 @@ const Profile = () => {
               </div>
             )}
 
-            {/* QABULLAR (O'zgarmadi) */}
+            {/* QABULLAR */}
             {activeTab === 'qabullar' && (
               <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
                 <h2 className="text-2xl font-black text-gray-900 mb-8">Bo'lajak qabullar</h2>
