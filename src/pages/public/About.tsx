@@ -66,7 +66,7 @@ const About = () => {
         
         <div className="relative z-10 max-w-xl space-y-5">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-xs sm:text-sm font-bold tracking-wide shadow-sm">
-             StomaCare Klinikasi
+             Denta Abu-Muslim Klinikasi
           </div>
           
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-black leading-[1.15] tracking-tight">
@@ -84,7 +84,7 @@ const About = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-blue-900/40 via-transparent to-transparent z-10 mix-blend-overlay"></div>
             <img 
               src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=600" 
-              alt="StomaCare Clinic" 
+              alt="Denta Abu-Muslim Clinic" 
               className="w-full h-[240px] lg:h-[280px] object-cover hover:scale-105 transition-transform duration-700"
             />
           </div>
@@ -136,7 +136,7 @@ const About = () => {
           
           <div className="space-y-4 text-gray-500 text-base leading-relaxed">
             <p>
-              StomaCare klinikasi o'z faoliyatini 2009-yilda kichik bir xona bilan boshlagan. Bugungi kunga kelib biz Toshkentdagi eng ilg'or uskunalar bilan jihozlangan, barcha turdagi stomatologik xizmatlarni ko'rsatuvchi yirik markazga aylandik.
+              Denta Abu-Muslim klinikasi o'z faoliyatini 2009-yilda kichik bir xona bilan boshlagan. Bugungi kunga kelib biz Toshkentdagi eng ilg'or uskunalar bilan jihozlangan, barcha turdagi stomatologik xizmatlarni ko'rsatuvchi yirik markazga aylandik.
             </p>
             <p>
               Bizning vazifamiz — odamlarni tish davolashdan qo'rqish hissini yo'qotish va har bir muolajani maksimal darajada qulay, og'riqsiz va xavfsiz o'tkazishdir.

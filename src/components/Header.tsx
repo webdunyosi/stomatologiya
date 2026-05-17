@@ -117,8 +117,18 @@ const Header = () => {
       </div>
 
       {/* Mobil logo */}
-      <div className="md:hidden font-black text-2xl tracking-tighter text-blue-600">
-        Stoma<span className="text-gray-900">Care</span>
+      <div className="md:hidden flex items-center gap-2">
+        <div className="bg-gradient-to-br from-yellow-400 to-amber-600 text-white p-1.5 rounded-xl shadow-md shadow-amber-500/20">
+          <span className="font-black text-lg leading-none block text-blue-900">D</span>
+        </div>
+        <div className="flex flex-col">
+          <span className="text-lg font-black tracking-wider text-gray-900 leading-none">
+            DENTA
+          </span>
+          <span className="text-[8px] font-bold tracking-[0.2em] text-amber-600 uppercase mt-0.5">
+            Abu-Muslim
+          </span>
+        </div>
       </div>
 
       {/* 2. Profil va Kirish qismi */}

@@ -144,7 +144,7 @@ const Home = () => {
       <section className="p-0 md:p-4 mx-2 md:mx-0">
         <div className="text-center mb-12 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">
           <h2 className="text-3xl lg:text-4xl font-black text-gray-900">
-            Nega aynan StomaCare?
+            Nega aynan Denta Abu-Muslim?
           </h2>
           <p className="text-gray-500 mt-3 text-lg">
             Bemorlarimiz bizga nima uchun ishonishadi

@@ -19,12 +19,17 @@ const AdminHeader = () => {
       {/* MOBIL LOGO - Faqat lg ekrandan kichikda ko'rinadi */}
       <div className="lg:hidden flex items-center">
         <Link to="/admin" className="flex items-center gap-2">
-          <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-200">
-            <span className="text-white font-black text-xl">S</span>
+          <div className="w-10 h-10 bg-gradient-to-br from-yellow-400 to-amber-600 rounded-xl flex items-center justify-center shadow-lg shadow-amber-200">
+            <span className="text-white font-black text-xl">D</span>
           </div>
-          <h1 className="text-lg font-black tracking-tighter text-gray-900 leading-none">
-            Stoma<span className="text-blue-600">Admin</span>
-          </h1>
+          <div className="flex flex-col">
+            <span className="text-lg font-black tracking-wider text-gray-900 leading-none">
+              DENTA
+            </span>
+            <span className="text-[8px] font-bold tracking-[0.2em] text-amber-600 uppercase mt-0.5">
+              Admin
+            </span>
+          </div>
         </Link>
       </div>
 

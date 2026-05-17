@@ -19,9 +19,19 @@ const Sidebar = () => {
     <div className="p-6 flex flex-col h-full">
       {/* Logotip */}
       <div className="mb-12">
-        <h1 className="text-2xl font-black tracking-tight text-white">
-          Stoma<span className="text-blue-200">Care</span>
-        </h1>
+        <div className="flex items-center gap-3">
+          <div className="bg-white text-blue-600 p-2.5 rounded-2xl shadow-lg shadow-white/10">
+            <span className="font-black text-2xl leading-none block">D</span>
+          </div>
+          <div className="flex flex-col">
+            <span className="text-2xl font-black tracking-wider text-white leading-none">
+              DENTA
+            </span>
+            <span className="text-[10px] font-bold tracking-[0.2em] text-blue-200 uppercase mt-1">
+              Abu-Muslim
+            </span>
+          </div>
+        </div>
       </div>
 
       {/* Navigatsiya menyusi */}

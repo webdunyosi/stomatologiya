@@ -20,8 +20,18 @@ const Footer = () => {
         
         {/* 1. Brend va Haqida */}
         <div className="space-y-6">
-          <Link to="/" className="text-2xl font-bold text-white">
-            Stoma<span className="text-blue-500">Care</span>
+          <Link to="/" className="flex items-center gap-3 w-fit group">
+            <div className="bg-gradient-to-br from-yellow-300 via-amber-400 to-yellow-600 p-2 rounded-xl shadow-lg shadow-amber-500/20 group-hover:shadow-amber-500/40 transition-shadow">
+              <span className="font-black text-xl text-blue-900 leading-none block">D</span>
+            </div>
+            <div className="flex flex-col">
+              <span className="text-xl font-black tracking-wider text-white leading-none">
+                DENTA
+              </span>
+              <span className="text-[10px] font-bold tracking-[0.2em] text-amber-400 uppercase mt-1">
+                Abu-Muslim
+              </span>
+            </div>
           </Link>
           <p className="text-sm leading-relaxed">
             2010-yildan buyon bemorlarimizga yuqori sifatli stomatologik xizmat ko'rsatib kelmoqdamiz.
@@ -73,7 +83,7 @@ const Footer = () => {
       {/* Mualliflik huquqi bo'limi - Yil shu yerda ishlatildi */}
       <div className="border-t border-gray-800 py-8">
         <div className="max-w-7xl mx-auto px-4 text-center text-sm">
-          <p>&copy; {currentYear} StomaCare. Barcha huquqlar himoyalangan.</p>
+          <p>&copy; {currentYear} Denta Abu-Muslim. Barcha huquqlar himoyalangan.</p>
         </div>
       </div>
     </footer>

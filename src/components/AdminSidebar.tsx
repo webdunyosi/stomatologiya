@@ -26,9 +26,19 @@ const AdminSidebar = () => {
     <aside className="w-72 bg-gray-900 text-gray-300 flex flex-col h-full shadow-2xl z-20">
       {/* Admin Logo qismi */}
       <div className="h-20 flex items-center px-8 border-b border-gray-800">
-        <h1 className="text-2xl font-black tracking-tight text-white">
-          Stoma<span className="text-blue-500">Admin</span>
-        </h1>
+        <div className="flex items-center gap-3">
+          <div className="bg-gradient-to-br from-yellow-300 via-amber-400 to-yellow-600 p-2 rounded-xl shadow-lg shadow-amber-500/20">
+            <span className="font-black text-xl text-blue-900 leading-none block">D</span>
+          </div>
+          <div className="flex flex-col">
+            <span className="text-xl font-black tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-white to-yellow-100 leading-none">
+              DENTA
+            </span>
+            <span className="text-[10px] font-bold tracking-[0.2em] text-amber-400 uppercase mt-1">
+              Admin
+            </span>
+          </div>
+        </div>
       </div>
 
       {/* Menyu */}
@@ -58,7 +68,7 @@ const AdminSidebar = () => {
       {/* Pastki qismda yordamchi ma'lumot (Ixtiyoriy) */}
       <div className="p-6 bg-gray-800/30 m-4 rounded-2xl border border-gray-800">
         <p className="text-[10px] uppercase font-black text-gray-500 tracking-widest">Versiya</p>
-        <p className="text-xs text-gray-400 mt-1 font-bold">StomaCare Admin v1.0.2</p>
+        <p className="text-xs text-gray-400 mt-1 font-bold">Denta Abu-Muslim Admin v1.0.2</p>
       </div>
     </aside>
   );
