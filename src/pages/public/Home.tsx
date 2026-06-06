@@ -24,7 +24,7 @@ const Home = () => {
       title: "Tish tozalash (Air Flow)",
       description:
         "Yuqori sifatli va og'riqsiz tish tozalash xizmati. Tishlaringizni tabiiy oqligini qaytaramiz.",
-      price: "250,000",
+      price: "200,000",
       category: "Terapevt",
       youtubeId: "UhQzx8n8tFU",
     },
