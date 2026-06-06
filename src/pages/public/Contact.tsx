@@ -8,8 +8,8 @@ const Contact = () => {
       id: 1,
       icon: <Phone size={24} />,
       label: "TELEFON",
-      value: "+998 71 123 45 67",
-      href: "tel:+998711234567",
+      value: "+998 50 950 95 45",
+      href: "tel:+998509509545",
       target: "_self"
     },
     {

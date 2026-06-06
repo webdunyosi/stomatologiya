@@ -56,8 +56,8 @@ const Sidebar = () => {
       <div className="mt-auto pt-8 border-t border-blue-500/30">
         <div className="bg-blue-800/50 p-4 rounded-2xl">
           <p className="text-sm text-blue-100 font-medium mb-1">Shoshilinch yordam</p>
-          <a href="tel:+998711234567" className="text-white font-bold hover:underline">
-            +998 71 123 45 67
+          <a href="tel:+998509509545" className="text-white font-bold hover:underline">
+            +998 50 950 95 45
           </a>
         </div>
       </div>

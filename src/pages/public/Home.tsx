@@ -311,7 +311,7 @@ const Home = () => {
           <div className="relative z-10 w-full md:w-auto mt-4 md:mt-0">
             {/* LIQUID GLASS TUGMA - YORQIN VA ANIMATSIYALI */}
             <a
-              href="tel:+998711234567"
+              href="tel:+998509509545"
               className="group relative w-full md:w-auto inline-flex items-center justify-center gap-4 px-3 md:px-8 py-4 md:py-5 bg-white rounded-2xl text-blue-900 font-black text-lg md:text-xl shadow-[0_8px_30px_rgb(0,0,0,0.15)] hover:shadow-blue-400/50 hover:-translate-y-1 hover:scale-[1.02] active:scale-95 transition-all duration-500 ease-out overflow-hidden"
             >
               {/* Oqib o'tuvchi yorug'lik effekti (Liquid Shine) */}
@@ -325,7 +325,7 @@ const Home = () => {
 
               {/* Raqam matni */}
               <span className="relative z-10 tracking-wide">
-                +998 71 123 45 67
+                +998 50 950 95 45
               </span>
             </a>
           </div>

@@ -74,7 +74,7 @@ const Footer = () => {
           <h3 className="text-white font-bold text-lg mb-6">Bog'lanish</h3>
           <ul className="space-y-4 text-sm">
             <li className="flex gap-3"><MapPin size={18} className="text-blue-500"/> Toshkent sh.</li>
-            <li className="flex gap-3"><Phone size={18} className="text-blue-500"/> +998 71 123 45 67</li>
+            <li className="flex gap-3"><Phone size={18} className="text-blue-500"/> +998 50 950 95 45</li>
             <li className="flex gap-3"><Mail size={18} className="text-blue-500"/> info@stoma.uz</li>
           </ul>
         </div>
