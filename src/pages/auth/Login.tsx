@@ -83,6 +83,14 @@ const Login = () => {
           Hali ro'yxatdan o'tmaganmisiz? <br />
           <Link to="/register" className="text-blue-600 font-bold hover:underline">Yangi profil yaratish</Link>
         </div>
+
+        <div className="mt-6 p-4 bg-blue-50/50 rounded-2xl border border-blue-100/50 text-left">
+          <p className="text-xs font-semibold text-blue-800 uppercase tracking-wider mb-2">Admin test ma'lumotlari:</p>
+          <div className="space-y-1 text-sm text-blue-900 font-medium">
+            <div><span className="text-blue-600">Tel:</span> +998901112233</div>
+            <div><span className="text-blue-600">Parol:</span> admin</div>
+          </div>
+        </div>
       </div>
     </div>
   );
